@@ -1,0 +1,351 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fefff5;
+    --black: #333;
+    --green: #d1eac8;
+    --brown: #7D5852;
+}
+
+.abril-fatface-regular {
+    font-family: "Abril Fatface", serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.montserrat-regular {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: var(--white);
+    font-size: 16px; /* Base font size */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* overflow-x: hidden; Prevent horizontal overflow */
+}
+
+nav {
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    width: 100%; /* Ensure nav spans the full width */
+    position: sticky;
+}
+
+.main-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav li {
+    margin-right: 2rem; 
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-nav a:hover {
+    color: #666;
+}
+
+.banner {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.banner-text {
+    color: var(--white);
+    position: absolute;
+    top: 50%;
+    left: 4rem;
+    transform: translateY(-50%);
+    max-width: calc(100% - 8rem); /* Prevent text overflow */
+}
+
+.banner-heading {
+    font-size: 4vw;
+    max-width: 90%; /* Ensure text wraps within container */
+}
+
+header p.montserrat-regular {
+    padding-top: 1.5rem;
+    font-size: 1.5vw;
+    line-height: 1.2;
+}
+
+.about-content, .training-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    width: 100%;
+}
+
+.about-content .image, .training-content .image {
+    width: 100%;
+    height: 80vh; /* Ensures the images take the full height of the container */
+    overflow: hidden;
+}
+
+.about-content .image img, .training-content .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-content .text, .training-content .text {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-content h2, .training-content h2 {
+    font-size: 4vw; 
+    margin-bottom: 1rem;
+}
+
+.about-content p, .training-content p {
+    font-size: 1.5vw; 
+    margin-bottom: 1.5rem;
+}
+
+.about-content .learn-more, .training-content .learn-more {
+    background-color: var(--green);
+    text-decoration: none;
+    color: var(--black);
+    padding: 0.75vw 1vw; 
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    align-self: start;
+    font-size: 1.25vw;
+}
+
+.about-content .learn-more:hover {
+    background-color: #bdebac;
+}
+
+.training-content {
+    background-color: var(--brown);
+    position: relative;
+    color: var(--white);
+}
+
+.training-content .learn-more {
+    background-color: #612F2B;
+    color: var(--white);
+}
+
+.training-content .learn-more:hover {
+    background-color: #49211f;
+}
+
+.icon {
+    position: absolute;
+    width: 10vw;  /* Adjust as needed */
+    height: auto;
+    opacity: 1;
+}
+
+/* Specific positions for icons */
+.about-content .icon-1 {
+    width: 5vw;
+    top: 15%;
+    left: 8%;
+}
+
+.about-content .icon-2 {
+    bottom: 70%;
+    right: 5%;
+}
+
+.about-content .icon-3 {
+    width: 15vw;
+    top: 60%;
+    right: -5%;
+}
+
+.training-content .icon-1 {
+    width: 5vw;
+    top: 15%;
+    left: 9%;
+}
+
+.training-content .icon-2 {
+    width: 10vw;
+    bottom: 50%;
+    right: 20%;
+}
+
+.training-content .icon-3 {
+    width: 17vw;
+    top: 65%;
+    right: 0%;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    .banner-heading {
+        font-size: 5vw; 
+    }
+
+    .about-content .text, .training-content .text {
+        padding: 2rem;
+    }
+
+    .about-content h2, .training-content h2 {
+        font-size: 4vw; 
+    }
+
+    .about-content p, .training-content p {
+        font-size: 2vw;
+    }
+
+    .icon {
+        width: 15vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav li {
+        margin-bottom: 2rem; 
+    }
+
+    .main-nav.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .banner-heading {
+        font-size: 6vw;
+    }
+
+    header p.montserrat-regular {
+        font-size: 1.25rem;
+    }
+
+    .about-content, .training-content {
+        grid-template-columns: 1fr;
+        min-height: auto; 
+    }
+
+    .about-content .image, .training-content .image {
+        height: 50vh; 
+    }
+
+    .about-content .text, .training-content .text {
+        padding: 2rem; 
+    }
+
+    .about-content h2, .training-content h2 {
+        font-size: 5vw; 
+    }
+
+    .about-content p, .training-content p {
+        font-size: 3vw; 
+    }
+
+    .main-nav li {
+        margin-right: 0;
+    }
+
+    .icon {
+        width: 20vw; 
+    }
+}
+
+@media (max-width: 375px) { /* iPhone SE */
+    nav {
+        padding: 1rem; 
+    }
+
+    .banner-heading {
+        font-size: 7vw; 
+    }
+
+    .banner-text {
+        left: 1rem; 
+        max-width: calc(100% - 2rem); /* Prevent text overflow */
+    }
+
+    .about-content .text, .training-content .text {
+        padding: 1rem; 
+    }
+
+    .about-content h2, .training-content h2 {
+        font-size: 6vw; 
+    }
+
+    .about-content p, .training-content p {
+        font-size: 4vw; 
+    }
+
+    .icon {
+        width: 25vw; 
+    }
+
+    .main-nav li {
+        margin-right: 0.5rem; 
+    }
+}
+
+@media (max-width: 280px) { /* Galaxy Fold */
+    nav {
+        padding: 0.5rem;
+    }
+
+    .banner-heading {
+        font-size: 8vw; 
+    }
+
+    .banner-text {
+        left: 1rem; 
+        max-width: calc(100% - 2rem); /* Prevent text overflow */
+    }
+
+    .about-content .text, .training-content .text {
+        padding: 0.5rem; 
+    }
+
+    .about-content h2, .training-content h2 {
+        font-size: 7vw; 
+    }
+
+    .about-content p, .training-content p {
+        font-size: 5vw; 
+    }
+
+    .icon {
+        width: 30vw; 
+    }
+
+    .main-nav li {
+        margin-right: 0.25rem; 
+    }
+}
+
