@@ -9,6 +9,8 @@
     --black: #333;
     --green: #d1eac8;
     --brown: #7D5852;
+    --pink: #CDA8DF;
+    --purple: #8B42C5;
 }
 
 .abril-fatface-regular {
@@ -97,26 +99,26 @@ header p.montserrat-regular {
     line-height: 1.2;
 }
 
-.about-content, .training-content {
+.about-content, .training-content, .repair-content, .event-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 80vh;
     width: 100%;
 }
 
-.about-content .image, .training-content .image {
+.about-content .image, .training-content .image, .repair-content .image, .event-content .image {
     width: 100%;
-    height: 80vh; /* Ensures the images take the full height of the container */
+    min-height: 80vh; /* Ensures the images take the full height of the container */
     overflow: hidden;
 }
 
-.about-content .image img, .training-content .image img {
+.about-content .image img, .training-content .image img, .repair-content .image img, .event-content .image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.about-content .text, .training-content .text {
+.about-content .text, .training-content .text, .repair-content .text, .event-content .text {
     padding: 4rem;
     display: flex;
     flex-direction: column;
@@ -125,17 +127,18 @@ header p.montserrat-regular {
     overflow: hidden;
 }
 
-.about-content h2, .training-content h2 {
+.about-content h2, .training-content h2, .repair-content h2, .event-content h2 {
     font-size: 4vw; 
     margin-bottom: 1rem;
+    z-index: 5;
 }
 
-.about-content p, .training-content p {
+.about-content p, .training-content p, .repair-content p, .event-content p {
     font-size: 1.5vw; 
     margin-bottom: 1.5rem;
 }
 
-.about-content .learn-more, .training-content .learn-more {
+.about-content .learn-more, .training-content .learn-more, .repair-content .learn-more, .event-content .learn-more {
     background-color: var(--green);
     text-decoration: none;
     color: var(--black);
@@ -147,11 +150,24 @@ header p.montserrat-regular {
 }
 
 .about-content .learn-more:hover {
-    background-color: #bdebac;
+    background-color: #4f6348;
+    color: #fff;
 }
 
 .training-content {
     background-color: var(--brown);
+    position: relative;
+    color: var(--white);
+}
+
+.event-content {
+    background-color: #CDA8DF;
+    position: relative;
+    color: var(--white);
+}
+
+.repair-content {
+    background-color: #BA9945;
     position: relative;
     color: var(--white);
 }
@@ -161,8 +177,27 @@ header p.montserrat-regular {
     color: var(--white);
 }
 
+.repair-content .learn-more {
+    background-color: #725E2A;
+    color: var(--white);
+}
+
+.event-content .learn-more {
+    background-color: #8B42C5;
+    color: var(--white);
+}
+
 .training-content .learn-more:hover {
     background-color: #49211f;
+}
+
+.repair-content .learn-more:hover {
+    background-color: #423719;
+    color: #fff;
+}
+
+.event-content .learn-more:hover {
+    background-color: #56297a;
 }
 
 .icon {
@@ -190,22 +225,115 @@ header p.montserrat-regular {
     right: -5%;
 }
 
+.event-content .icon-1 {
+    width: 5vw;
+    top: 15%;
+    left: 8%;
+    opacity: 50%;
+}
+
+.event-content .icon-2 {
+    bottom: 70%;
+    right: 5%;
+    opacity: 50%;
+}
+
+.event-content .icon-3 {
+    width: 15vw;
+    top: 60%;
+    right: -5%;
+    opacity: 50%;
+}
+
 .training-content .icon-1 {
     width: 5vw;
     top: 15%;
     left: 9%;
+    opacity: 50%;
 }
 
 .training-content .icon-2 {
     width: 10vw;
     bottom: 50%;
     right: 20%;
+    opacity: 50%;
 }
 
 .training-content .icon-3 {
     width: 17vw;
     top: 65%;
     right: 0%;
+    opacity: 50%;
+}
+
+.repair-content .icon-1 {
+    width: 5vw;
+    top: 15%;
+    left: 9%;
+    opacity: 50%;
+}
+
+.repair-content .icon-2 {
+    width: 10vw;
+    bottom: 50%;
+    right: 20%;
+    opacity: 50%;
+}
+
+.repair-content .icon-3 {
+    width: 17vw;
+    top: 65%;
+    right: 0%;
+    opacity: 50%;
+}
+
+.foter{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    position: relative;
+}
+
+.foter .copyright{
+    align-self: center;
+}
+
+.foter .social{
+    padding: 5px;
+}
+
+.social{
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+}
+
+.socialicons{
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    align-items: center;
+}
+
+.contacts{
+    background-color: #612F2B;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    justify-content: center;
+    padding: 100px;
+}
+
+.contacts .address, .contacts .online {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    width: 300px;
 }
 
 /* Media Queries for Responsive Design */
@@ -214,21 +342,76 @@ header p.montserrat-regular {
         font-size: 5vw; 
     }
 
-    .about-content .text, .training-content .text {
+    .about-content .text, .event-content .text, .repair-content .text, .training-content .text {
         padding: 2rem;
+        margin: 2rem;
     }
 
-    .about-content h2, .training-content h2 {
+    .about-content h2, .event-content h2, .repair-content h2, .training-content h2 {
         font-size: 4vw; 
     }
 
-    .about-content p, .training-content p {
+    .about-content p, .event-content p, .repair-content p, .training-content p {
         font-size: 2vw;
     }
 
     .icon {
         width: 15vw;
     }
+
+    .icongroup{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .foter{
+        display: flex;
+        flex-shrink: 1;
+    }
+
+    .foter .social{
+        flex-shrink: 1;
+    }
+
+    .foter h2{
+        font-size: 16px;
+    }
+
+    .social{
+        width: 40px;
+        height: 40px;
+        padding: 5px;
+    }
+    
+    .socialicons{
+        display: flex;
+        justify-content: space-between;
+        width: 15%;
+        align-items: center;
+    }
+    
+    .contacts{
+        background-color: #612F2B;
+        color: #fff;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        justify-content: center;
+        padding: 100px;
+    }
+    
+    .contacts .address, .contacts .online {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-items: center;
+        align-items: center;
+        width: 200px;
+        font-size: 10px;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -249,24 +432,24 @@ header p.montserrat-regular {
         font-size: 1.25rem;
     }
 
-    .about-content, .training-content {
+    .about-content, .event-content, .repair-content, .training-content {
         grid-template-columns: 1fr;
         min-height: auto; 
     }
 
-    .about-content .image, .training-content .image {
+    .about-content .image, .event-content .image, .repair-content .image, .training-content .image {
         height: 50vh; 
     }
 
-    .about-content .text, .training-content .text {
+    .about-content .text, .event-content .text, .repair-content .text, .training-content .text {
         padding: 2rem; 
     }
 
-    .about-content h2, .training-content h2 {
+    .about-content h2, .event-content h2, .repair-content h2, .training-content h2 {
         font-size: 5vw; 
     }
 
-    .about-content p, .training-content p {
+    .about-content p, .event-content p, .repair-content p, .training-content p {
         font-size: 3vw; 
     }
 
@@ -276,7 +459,45 @@ header p.montserrat-regular {
 
     .icon {
         width: 20vw; 
+        margin: 5px;
     }
+
+    .icongroup{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .foter{
+        padding: 5rem;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        min-height: auto; 
+    }
+
+    .foter .logo, .foter .copyright, .foter .socialicons{
+        margin: auto;
+    }
+
+    .foter .copyright{
+        flex-shrink: 1;
+    }
+
+    .social{
+        width: 40px;
+        height: 40px;
+        padding: 5px;
+    }
+
+    .foter h2{
+        font-size: 16px;
+    }
+    
+    .socialicons{
+        display: flex;
+        width: 75%;
+        align-items: center;
+    }
+
 }
 
 @media (max-width: 375px) { /* iPhone SE */
@@ -293,15 +514,15 @@ header p.montserrat-regular {
         max-width: calc(100% - 2rem); /* Prevent text overflow */
     }
 
-    .about-content .text, .training-content .text {
+    .about-content .text, .event-content .text, .repair-content .text, .training-content .text {
         padding: 1rem; 
     }
 
-    .about-content h2, .training-content h2 {
+    .about-content h2, .event-content h2, .repair-content h2, .training-content h2 {
         font-size: 6vw; 
     }
 
-    .about-content p, .training-content p {
+    .about-content p, .event-content p, .repair-content p, .training-content p {
         font-size: 4vw; 
     }
 
@@ -312,6 +533,36 @@ header p.montserrat-regular {
     .main-nav li {
         margin-right: 0.5rem; 
     }
+
+    .icongroup{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .foter{
+        padding: 5rem;
+    }
+
+    .foter .logo, .foter .copyright, .foter .socialicons{
+        margin: auto;
+    }
+
+    .foter .copyright{
+        flex-shrink: 1;
+    }
+
+    .social{
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+    }
+    
+    .socialicons{
+        display: flex;
+        width: 75%;
+        align-items: center;
+    }
+
 }
 
 @media (max-width: 280px) { /* Galaxy Fold */
@@ -328,15 +579,15 @@ header p.montserrat-regular {
         max-width: calc(100% - 2rem); /* Prevent text overflow */
     }
 
-    .about-content .text, .training-content .text {
+    .about-content .text, .event-content .text, .repair-content .text, .training-content .text {
         padding: 0.5rem; 
     }
 
-    .about-content h2, .training-content h2 {
+    .about-content h2, .event-content h2, .repair-content h2, .training-content h2 {
         font-size: 7vw; 
     }
 
-    .about-content p, .training-content p {
+    .about-content p, .event-content p, .repair-content p, .training-content p {
         font-size: 5vw; 
     }
 
@@ -347,5 +598,31 @@ header p.montserrat-regular {
     .main-nav li {
         margin-right: 0.25rem; 
     }
+
+    .icongroup{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .foter .logo, .foter .copyright, .foter .socialicons{
+        margin: auto;
+    }
+
+    .foter .copyright{
+        flex-shrink: 1;
+    }
+
+    .social{
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+    }
+    
+    .socialicons{
+        display: flex;
+        width: 75%;
+        align-items: center;
+    }
+
 }
 
