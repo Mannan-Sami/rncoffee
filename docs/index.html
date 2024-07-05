@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RN Coffee</title>
+    <title>Bangladesh Coffee Academy</title>
     <link rel="icon" type="image" href="./assets/images/LOGO.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,21 +12,65 @@
 </head>
 <body>
     <nav class="montserrat-regular">
-        <p><img src="./assets/images/LOGO.svg" height="50px" width="50px" class="logo" alt="Icon 1"></p>
-        <ul class="main-nav">
+    <p><img src="./assets/images/LOGO.svg" height="50px" width="50px" class="logo" alt="Icon 1"></p>
+    <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <ul class="main-nav">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="mobile-nav montserrat-regular">
+    <button class="close-menu">&times;</button>
+    <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+    </ul>
+</div>
+    
+    <div class="mobile-nav montserrat-regular">
+        <button class="close-menu">&times;</button>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+    </div>
+    
+    <div class="mobile-nav montserrat-regular">
+        <button class="close-menu">&times;</button>
+        <ul>
             <li><a href="./index.html">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="./contact.html">Contact</a></li>
         </ul>
-    </nav>
+    </div>
+    
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+    </div>
     
     <header>
         <section class="banner">
             <img src="./assets/images/banner.jpg" alt="Coffee cup on a table">
             <div class="banner-text">
                 <div class="banner-heading">
-                    <h1 class="abril-fatface-regular">Master The <br>Art of Coffee</h1>
+                    <h1 class="abril-fatface-regular">Welcome to <br>Bangladesh Coffee Academy</h1>
                 </div>
                 <p class="montserrat-regular">Join us to explore <br>coffee making at it's finest.</p>
             </div>
@@ -40,7 +84,6 @@
                 </div>
                 <div class="text">
                     <div class="icongroup">
-                        <img src="./assets/icons/About Icons/icon-1.svg" class="icon icon-1" alt="Icon 1">
                         <img src="./assets/icons/About Icons/icon-2.svg" class="icon icon-2" alt="Icon 2">
                         <img src="./assets/icons/About Icons/icon-3.svg" class="icon icon-3" alt="Icon 3">
                     </div>
@@ -55,7 +98,6 @@
             <div class="training-content">
                 <div class="text">
                     <div class="icongroup">
-                        <img src="./assets/icons/Training Icons/icon-1.svg" class="icon icon-1" alt="Icon 1">
                         <img src="./assets/icons/Training Icons/icon-2.svg" class="icon icon-2" alt="Icon 2">
                         <img src="./assets/icons/Training Icons/icon-3.svg" class="icon icon-3" alt="Icon 3">
                     </div>
@@ -76,7 +118,6 @@
                 </div>
                 <div class="text">
                     <div class="icongroup">
-                        <img src="./assets/icons/Event Icons/icon-1.svg" class="icon icon-1" alt="Icon 1">
                         <img src="./assets/icons/Event Icons/icon-2.svg" class="icon icon-2" alt="Icon 2">
                         <img src="./assets/icons/Event Icons/icon-3.svg" class="icon icon-3" alt="Icon 3">
                     </div>
@@ -91,7 +132,6 @@
             <div class="repair-content">
                 <div class="text">
                     <div class="icongroup">
-                        <img src="./assets/icons/Repair Icons/icon-1.svg" class="icon icon-1" alt="Icon 1">
                         <img src="./assets/icons/Repair Icons/icon-2.svg" class="icon icon-2" alt="Icon 2">
                         <img src="./assets/icons/Repair Icons/icon-3.svg" class="icon icon-3" alt="Icon 3">
                     </div>
@@ -107,21 +147,16 @@
         
     </main>
 
-    <div class="foter">
+    <div class="footer">
         <img src="./assets/images/LOGO.svg" class="logo" alt="Icon 1">
-
-        <h2 class="copyright abril-fatface-regular"> © RN Coffee 2024. All rights reserved </h2>
-
+        <h2 class="copyright abril-fatface-regular"> © Bangladesh Coffee Academy. <br> All rights reserved </h2>
         <div class="socialicons">
             <img src="./assets/images/facebook.svg" class="social icon-1" alt="Icon 1">
-
             <img src="./assets/images/instagram.svg" class="social icon-1" alt="Icon 1">
-
             <img src="./assets/images/twitter.svg" class="social icon-1" alt="Icon 1">
         </div>
-        
-
     </div>
 
+    <script src="scripts.js"></script>
 </body>
 </html>

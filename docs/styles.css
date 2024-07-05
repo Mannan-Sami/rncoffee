@@ -1,3 +1,4 @@
+/* Base Styles*/  
 * {
     padding: 0;
     margin: 0;
@@ -10,7 +11,7 @@
     --green: #d1eac8;
     --brown: #7D5852;
     --pink: #CDA8DF;
-    --purple: #8B42C5;
+    --yellow: #f0c24d;  /*TODO : Change color to a lighter shade, adjust text.*/
 }
 
 .abril-fatface-regular {
@@ -36,13 +37,15 @@ body {
 }
 
 nav {
+    position: sticky;
+    top: 0;
     background-color: var(--white);
+    z-index: 1000;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 4rem;
-    width: 100%; /* Ensure nav spans the full width */
-    position: sticky;
 }
 
 .main-nav {
@@ -58,17 +61,101 @@ nav {
 
 .main-nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--black);
 }
 
 .main-nav a:hover {
     color: #666;
 }
 
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--black);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: var(--white);
+    transition: 0.4s;
+    z-index: 999;
+    text-align: center;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.mobile-nav li {
+    padding: 20px 0;
+}
+
+.mobile-nav a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 2rem;
+    display: block;
+}
+
+/* Close Button Styles */
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--black);
+}
+
+/* Hamburger Menu Animation */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Banner */
+
+/* Hero Section Styles */
 .banner {
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    height: 100vh; /* Default height for large screens */
+    max-height: 900px; /* Maximum height to prevent excessive stretching on very tall screens */
+    min-height: 500px; /* Minimum height to ensure content visibility on smaller screens */
     width: 100%;
 }
 
@@ -76,49 +163,51 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%; /* Adjust vertical position to reduce cropping of important elements */
     filter: brightness(0.7);
 }
 
 .banner-text {
-    color: var(--white);
     position: absolute;
     top: 50%;
     left: 4rem;
     transform: translateY(-50%);
-    max-width: calc(100% - 8rem); /* Prevent text overflow */
+    color: var(--white);
+    max-width: calc(100% - 8rem);
+    z-index: 1;
 }
 
-.banner-heading {
-    font-size: 4vw;
-    max-width: 90%; /* Ensure text wraps within container */
-}
-
-header p.montserrat-regular {
-    padding-top: 1.5rem;
-    font-size: 1.5vw;
+.banner-heading h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
     line-height: 1.2;
 }
 
-.about-content, .training-content, .repair-content, .event-content {
+.banner-text p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.about-content, .training-content, .event-content, .repair-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
+    min-height: 80h;
     width: 100%;
 }
 
-.about-content .image, .training-content .image, .repair-content .image, .event-content .image {
+.about-content .image, .training-content .image, .event-content .image, .repair-content .image {
     width: 100%;
-    min-height: 80vh; /* Ensures the images take the full height of the container */
+    height: 800px; /* Ensures the images take the full height of the container */
     overflow: hidden;
 }
 
-.about-content .image img, .training-content .image img, .repair-content .image img, .event-content .image img {
+.about-content .image img, .training-content .image img, .event-content .image img, .repair-content .image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.about-content .text, .training-content .text, .repair-content .text, .event-content .text {
+.about-content .text, .training-content .text, .event-content .text, .repair-content .text {
     padding: 4rem;
     display: flex;
     flex-direction: column;
@@ -127,18 +216,17 @@ header p.montserrat-regular {
     overflow: hidden;
 }
 
-.about-content h2, .training-content h2, .repair-content h2, .event-content h2 {
+.about-content h2, .training-content h2, .event-content h2, .repair-content h2 {
     font-size: 4vw; 
     margin-bottom: 1rem;
-    z-index: 5;
 }
 
-.about-content p, .training-content p, .repair-content p, .event-content p {
+.about-content p, .training-content p, .event-content p, .repair-content p {
     font-size: 1.5vw; 
     margin-bottom: 1.5rem;
 }
 
-.about-content .learn-more, .training-content .learn-more, .repair-content .learn-more, .event-content .learn-more {
+.about-content .learn-more, .training-content .learn-more, .event-content .learn-more, .repair-content .learn-more {
     background-color: var(--green);
     text-decoration: none;
     color: var(--black);
@@ -150,8 +238,7 @@ header p.montserrat-regular {
 }
 
 .about-content .learn-more:hover {
-    background-color: #4f6348;
-    color: #fff;
+    background-color: #bdebac;
 }
 
 .training-content {
@@ -161,13 +248,11 @@ header p.montserrat-regular {
 }
 
 .event-content {
-    background-color: #CDA8DF;
-    position: relative;
-    color: var(--white);
+    background-color: var(--pink);
 }
 
 .repair-content {
-    background-color: #BA9945;
+    background-color: var(--yellow);
     position: relative;
     color: var(--white);
 }
@@ -177,13 +262,13 @@ header p.montserrat-regular {
     color: var(--white);
 }
 
-.repair-content .learn-more {
-    background-color: #725E2A;
+.event-content .learn-more {
+    background-color: #8B42C5;
     color: var(--white);
 }
 
-.event-content .learn-more {
-    background-color: #8B42C5;
+.repair-content .learn-more {
+    background-color: #725E2A;
     color: var(--white);
 }
 
@@ -191,29 +276,53 @@ header p.montserrat-regular {
     background-color: #49211f;
 }
 
+.event-content .learn-more:hover {
+    background-color: #56297a;
+}
+
 .repair-content .learn-more:hover {
     background-color: #423719;
     color: #fff;
 }
 
-.event-content .learn-more:hover {
-    background-color: #56297a;
+
+/* Icon positioning */
+.icongroup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none; /* Allows clicking through icons */
 }
 
 .icon {
     position: absolute;
-    width: 10vw;  /* Adjust as needed */
+    width: 80px;  /* Fixed width instead of percentage */
     height: auto;
     opacity: 1;
 }
 
 /* Specific positions for icons */
-.about-content .icon-1 {
-    width: 5vw;
-    top: 15%;
-    left: 8%;
+.icon-1 {
+    top: 10%;
+    left: 10%;
+    width: 50px; /* Smaller size for icon-1 */
 }
 
+.icon-2 {
+    top: 20%;
+    right: 15%;
+    width: 70px; /* Medium size for icon-2 */
+}
+
+.icon-3 {
+    bottom: 15%;
+    right: 5%;
+    width: 100px; /* Larger size for icon-3 */
+}
+
+/* Specific positions for icons */
 .about-content .icon-2 {
     bottom: 70%;
     right: 5%;
@@ -225,198 +334,178 @@ header p.montserrat-regular {
     right: -5%;
 }
 
-.event-content .icon-1 {
-    width: 5vw;
-    top: 15%;
-    left: 8%;
-    opacity: 50%;
-}
-
-.event-content .icon-2 {
-    bottom: 70%;
-    right: 5%;
-    opacity: 50%;
-}
-
-.event-content .icon-3 {
-    width: 15vw;
-    top: 60%;
-    right: -5%;
-    opacity: 50%;
-}
-
-.training-content .icon-1 {
+.training-content .icon-1, .event-content .icon-1, .repair-content .icon-1 {
     width: 5vw;
     top: 15%;
     left: 9%;
-    opacity: 50%;
 }
 
-.training-content .icon-2 {
+.training-content .icon-2, .event-content .icon-2, .repair-content .icon-2 {
     width: 10vw;
     bottom: 50%;
     right: 20%;
-    opacity: 50%;
 }
 
-.training-content .icon-3 {
+.training-content .icon-3, .event-content .icon-3, .repair-content .icon-3 {
     width: 17vw;
     top: 65%;
     right: 0%;
-    opacity: 50%;
 }
 
-.repair-content .icon-1 {
-    width: 5vw;
-    top: 15%;
-    left: 9%;
-    opacity: 50%;
-}
-
-.repair-content .icon-2 {
-    width: 10vw;
-    bottom: 50%;
-    right: 20%;
-    opacity: 50%;
-}
-
-.repair-content .icon-3 {
-    width: 17vw;
-    top: 65%;
-    right: 0%;
-    opacity: 50%;
-}
-
-.foter{
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    position: relative;
-}
-
-.foter .copyright{
-    align-self: center;
-}
-
-.foter .social{
-    padding: 5px;
-}
-
-.social{
-    width: 50px;
-    height: 50px;
-    padding: 5px;
-}
-
-.socialicons{
+/* Footer Styles */
+.footer {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 2rem 4rem;
     display: flex;
     justify-content: space-between;
-    width: 15%;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.contacts{
-    background-color: #612F2B;
-    color: #fff;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    justify-items: center;
-    justify-content: center;
-    padding: 100px;
+.footer .logo {
+    height: 50px;
+    width: auto;
 }
 
-.contacts .address, .contacts .online {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+.footer .copyright {
+    font-size: 1rem;
     text-align: center;
-    justify-items: center;
-    align-items: center;
-    width: 300px;
 }
 
-/* Media Queries for Responsive Design */
-@media (max-width: 1200px) {
-    .banner-heading {
-        font-size: 5vw; 
+.footer .socialicons {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer .social {
+    height: 24px;
+    width: 24px;
+}
+
+@media (max-width: 1366px) { /* iPad Pro or smaller */
+    .hamburger-menu {
+        display: block;
     }
 
-    .about-content .text, .event-content .text, .repair-content .text, .training-content .text {
-        padding: 2rem;
-        margin: 2rem;
+    .main-nav {
+        display: none;
     }
 
-    .about-content h2, .event-content h2, .repair-content h2, .training-content h2 {
-        font-size: 4vw; 
-    }
-
-    .about-content p, .event-content p, .repair-content p, .training-content p {
-        font-size: 2vw;
-    }
-
-    .icon {
-        width: 15vw;
-    }
-
-    .icongroup{
-        display: flex;
-        flex-direction: row;
-    }
-
-    .foter{
-        display: flex;
-        flex-shrink: 1;
-    }
-
-    .foter .social{
-        flex-shrink: 1;
-    }
-
-    .foter h2{
-        font-size: 16px;
-    }
-
-    .social{
-        width: 40px;
-        height: 40px;
-        padding: 5px;
+    .mobile-nav {
+        display: block;
     }
     
-    .socialicons{
-        display: flex;
-        justify-content: space-between;
-        width: 15%;
-        align-items: center;
+    .banner {
+        height: 80vh;
+        min-height: 600px;
+    }
+
+    .banner-heading h1 {
+        font-size: 3.5rem;
+        max-width: 80%;
+    }
+
+    .banner-text p {
+        font-size: 1.3rem;
     }
     
-    .contacts{
-        background-color: #612F2B;
-        color: #fff;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        justify-items: center;
-        justify-content: center;
-        padding: 100px;
+    header p.montserrat-regular {
+        padding-top: 1.5rem;
+        font-size: 3rem;
+        line-height: 1.2;
     }
-    
-    .contacts .address, .contacts .online {
-        padding: 20px;
+
+    .about-content, .training-content, .event-content, .repair-content {
         display: flex;
         flex-direction: column;
-        text-align: center;
-        justify-items: center;
-        align-items: center;
-        width: 200px;
-        font-size: 10px;
+        min-height: auto;
+        padding: 2rem;
     }
 
+    .about-content .image, .training-content .image, .event-content .image, .repair-content .image {
+        height: 40vh; /* Set the image height to 40vh */
+        overflow: hidden;
+        order: -1; /* Ensure images appear at the top */
+        width: 100%;
+    }
+
+    .about-content .image img, .training-content .image img, .event-content .image img, .repair-content .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures images cover the entire space */
+    }
+
+    .about-content .text, .training-content .text, .event-content .text, .repair-content .text {
+        padding: 2rem;
+        flex: 1;
+    }
+
+    .about-content h2, .training-content h2, .event-content h2, .repair-content h2 {
+        padding-bottom: 2rem;
+        font-size: 8vw; /* Increased font size */
+    }
+
+    .about-content p, .training-content p, .event-content p, .repair-content p {
+        font-size: 4vw; /* Increased font size */
+        padding-bottom: 2rem;
+    }
+
+    .about-content .learn-more, .training-content .learn-more, .event-content .learn-more, .repair-content .learn-more {
+        font-size: 3vw; /* Increased button font size */
+        padding: 2vw 3.5vw; /* Adjusted button padding */
+        border-radius: 0px; /* Adjusted button border radius */
+    }
+
+    .about-content .icon-2, .training-content .icon-2, .event-content .icon-2, .repair-content .icon-2 {
+        width: 0vw;
+        bottom: 50%;
+        right: 20%;
+    }
+    
+    .about-content .icon-3, .training-content .icon-3, .event-content .icon-3, .repair-content .icon-3 {
+        width: 25vw;
+        top: 70%;
+        right: -2%;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Mobile devices */
+    nav {
+        padding: 0.5rem 3rem;
+    }
+
+    .banner {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    .banner-text {
+        left: 3rem;
+        max-width: calc(100% - 4rem);
+    }
+
+    .banner-heading h1 {
+        font-size: 2.5rem;
+    }
+
+    .banner-text p {
+        font-size: 1rem;
+    }
+
+    section .banner-heading {
+        font-size: 2rem;
+        max-width: 100%; /* Ensure text wraps within container */
+    }
+    
+    header p.montserrat-regular {
+        padding-top: 1.5rem;
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+
     .main-nav li {
-        margin-bottom: 2rem; 
+        margin-bottom: 2rem;
     }
 
     .main-nav.active {
@@ -424,33 +513,53 @@ header p.montserrat-regular {
         transform: translateX(0);
     }
 
+    .mobile-nav {
+        width: 100%;
+    }
+
     .banner-heading {
         font-size: 6vw;
     }
 
-    header p.montserrat-regular {
-        font-size: 1.25rem;
+    .about-content, .training-content, .event-content, .repair-content {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        padding: 1rem;
     }
 
-    .about-content, .event-content, .repair-content, .training-content {
-        grid-template-columns: 1fr;
-        min-height: auto; 
+    .about-content .image, .training-content .image, .event-content .image, .repair-content .image {
+        height: 40vh; /* Set the image height to 40vh */
+        overflow: hidden;
+        order: -1; /* Ensure images appear at the top */
+        width: 100%;
     }
 
-    .about-content .image, .event-content .image, .repair-content .image, .training-content .image {
-        height: 50vh; 
+    .about-content .image img, .training-content .image img, .event-content .image img, .repair-content .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures images cover the entire space */
     }
 
-    .about-content .text, .event-content .text, .repair-content .text, .training-content .text {
-        padding: 2rem; 
+    .about-content .text, .training-content .text, .event-content .text, .repair-content .text {
+        padding: 2rem;
+        flex: 1;
     }
 
-    .about-content h2, .event-content h2, .repair-content h2, .training-content h2 {
-        font-size: 5vw; 
+    .about-content h2, .training-content h2, .event-content h2, .repair-content h2 {
+        padding-bottom: 1.5rem;
+        font-size: 10vw; /* Increased font size */
     }
 
-    .about-content p, .event-content p, .repair-content p, .training-content p {
-        font-size: 3vw; 
+    .about-content p, .training-content p, .event-content p, .repair-content p {
+        padding-bottom: 1.5rem;
+        font-size: 6vw; /* Increased font size */
+    }
+
+    .about-content .learn-more, .training-content .learn-more, .event-content .learn-more, .repair-content .learn-more {
+        font-size: 5vw; /* Increased button font size */
+        padding: 2.5vw 3vw; /* Adjusted button padding */
+        border-radius: 0px; /* Adjusted button border radius */
     }
 
     .main-nav li {
@@ -458,111 +567,110 @@ header p.montserrat-regular {
     }
 
     .icon {
-        width: 20vw; 
-        margin: 5px;
+        width: 20vw;
     }
 
-    .icongroup{
-        display: flex;
-        flex-direction: row;
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
     }
 
-    .foter{
-        padding: 5rem;
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
-        min-height: auto; 
+    .footer .logo {
+        margin-bottom: 1rem;
     }
 
-    .foter .logo, .foter .copyright, .foter .socialicons{
-        margin: auto;
+    .footer .copyright {
+        margin: 1rem 0;
     }
 
-    .foter .copyright{
-        flex-shrink: 1;
+    .footer .socialicons {
+        margin-top: 1rem;
     }
 
-    .social{
-        width: 40px;
-        height: 40px;
-        padding: 5px;
-    }
-
-    .foter h2{
-        font-size: 16px;
+    .about-content .icon-2, .training-content .icon-2, .event-content .icon-2, .repair-content .icon-2 {
+        width: 0vw;
+        bottom: 50%;
+        right: 20%;
     }
     
-    .socialicons{
-        display: flex;
-        width: 75%;
-        align-items: center;
+    .about-content .icon-3, .training-content .icon-3, .event-content .icon-3, .repair-content .icon-3 {
+        width: 27vw;
+        top: 80%;
+        right: -2%;
     }
-
 }
 
 @media (max-width: 375px) { /* iPhone SE */
     nav {
-        padding: 1rem; 
+        padding: 1rem 2rem;
     }
 
-    .banner-heading {
-        font-size: 7vw; 
+    .banner {
+        height: 50vh;
+        min-height: 350px;
     }
 
     .banner-text {
-        left: 1rem; 
-        max-width: calc(100% - 2rem); /* Prevent text overflow */
+        left: 2rem;
+        max-width: calc(100% - 3rem);
     }
 
-    .about-content .text, .event-content .text, .repair-content .text, .training-content .text {
-        padding: 1rem; 
+    .banner-heading h1 {
+        font-size: 2.5rem;
     }
 
-    .about-content h2, .event-content h2, .repair-content h2, .training-content h2 {
-        font-size: 6vw; 
+    .banner-text p {
+        font-size: 0.9rem;
     }
 
-    .about-content p, .event-content p, .repair-content p, .training-content p {
-        font-size: 4vw; 
+    .about-content, .training-content, .event-content, .repair-content {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    .about-content .image, .training-content .image, .event-content .image, .repair-content .image {
+        height: 40vh; /* Set the image height to 40vh */
+        overflow: hidden;
+        order: -1; /* Ensure images appear at the top */
+        width: 100%;
+    }
+
+    .about-content .image img, .training-content .image img, .event-content .image img, .repair-content .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures images cover the entire space */
+    }
+
+    .about-content .text, .training-content .text, .event-content .text, .repair-content .text {
+        padding: 1rem;
+        flex: 1;
+    }
+
+    .about-content h2, .training-content h2, .event-content h2, .repair-content h2 {
+        font-size: 10vw; /* Increased font size */
+    }
+
+    .about-content p, .training-content p, .event-content p, .repair-content p {
+        font-size: 6vw; /* Increased font size */
+    }
+
+    .about-content .learn-more, .training-content .learn-more, .event-content .learn-more, .repair-content .learn-more {
+        font-size: 4vw; /* Increased button font size */
+        padding: 3vw 3.5vw; /* Adjusted button padding */
+        border-radius: 0px; /* Adjusted button border radius */
     }
 
     .icon {
-        width: 25vw; 
+        width: 25vw;
     }
 
     .main-nav li {
-        margin-right: 0.5rem; 
+        margin-right: 0.5rem;
     }
-
-    .icongroup{
-        display: flex;
-        flex-direction: row;
-    }
-
-    .foter{
-        padding: 5rem;
-    }
-
-    .foter .logo, .foter .copyright, .foter .socialicons{
-        margin: auto;
-    }
-
-    .foter .copyright{
-        flex-shrink: 1;
-    }
-
-    .social{
-        width: 30px;
-        height: 30px;
-        padding: 5px;
-    }
-    
-    .socialicons{
-        display: flex;
-        width: 75%;
-        align-items: center;
-    }
-
 }
 
 @media (max-width: 280px) { /* Galaxy Fold */
@@ -571,58 +679,70 @@ header p.montserrat-regular {
     }
 
     .banner-heading {
-        font-size: 8vw; 
+        font-size: 8vw;
     }
 
     .banner-text {
-        left: 1rem; 
+        left: 1rem;
         max-width: calc(100% - 2rem); /* Prevent text overflow */
     }
 
-    .about-content .text, .event-content .text, .repair-content .text, .training-content .text {
-        padding: 0.5rem; 
+    .about-content, .training-content, .event-content, .repair-content {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        padding: 1rem;
     }
 
-    .about-content h2, .event-content h2, .repair-content h2, .training-content h2 {
-        font-size: 7vw; 
+    .about-content .image, .training-content .image, .event-content .image, .repair-content .image {
+        height: 40vh; /* Set the image height to 40vh */
+        overflow: hidden;
+        order: -1; /* Ensure images appear at the top */
+        width: 100%;
     }
 
-    .about-content p, .event-content p, .repair-content p, .training-content p {
-        font-size: 5vw; 
+    .about-content .image img, .training-content .image img, .event-content .image img, .repair-content .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures images cover the entire space */
     }
 
-    .icon {
-        width: 30vw; 
+    .about-content .text, .training-content .text, .event-content .text, .repair-content .text {
+        padding: 1rem;
+        flex: 1;
+    }
+
+    .about-content h2, .training-content h2, .event-content h2, .repair-content h2 {
+        font-size: 7vw; /* Increased font size */
+    }
+
+    .about-content p, .training-content p, .event-content p, .repair-content p {
+        font-size: 5vw; /* Increased font size */
+    }
+
+    .about-content .learn-more, .training-content .learn-more, .event-content .learn-more, .repair-content .learn-more {
+        font-size: 5vw; /* Increased button font size */
+        padding: 2.5vw 3vw; /* Adjusted button padding */
+        border-radius: 0px; /* Adjusted button border radius */
     }
 
     .main-nav li {
-        margin-right: 0.25rem; 
+        margin-right: 0.25rem;
     }
-
-    .icongroup{
-        display: flex;
-        flex-direction: row;
-    }
-
-    .foter .logo, .foter .copyright, .foter .socialicons{
-        margin: auto;
-    }
-
-    .foter .copyright{
-        flex-shrink: 1;
-    }
-
-    .social{
-        width: 30px;
-        height: 30px;
-        padding: 5px;
-    }
-    
-    .socialicons{
-        display: flex;
-        width: 75%;
-        align-items: center;
-    }
-
 }
 
+@media (min-aspect-ratio: 2/3) and (min-height: 1000px) {
+    .banner {
+        height: 60vh;
+    }
+}
+
+/* Ensure full-width mobile menu */
+.mobile-nav {
+    width: 100%;
+    right: -100%;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
